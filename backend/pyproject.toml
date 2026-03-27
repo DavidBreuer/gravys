@@ -1,0 +1,20 @@
+[project]
+name = "Gravys"
+version = "0.2.0"
+description = "Gravys"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pandas",
+    "python-dotenv",
+]
+
+[dependency-groups]
+dev = [
+    "playwright>=1.58.0",
+    "pytest-playwright>=0.7.2",
+    "pytest>=8",
+    "ruff>=0.14.11",
+]
