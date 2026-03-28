@@ -53,9 +53,12 @@ export default function Login({ onLogin }: LoginProps) {
       sx={{ bgcolor: "background.default" }}
     >
       <Paper elevation={3} sx={{ p: 4, width: "100%", maxWidth: 400 }}>
-        <Typography variant="h5" fontWeight="bold" textAlign="center" mb={3}>
-          Sign In
-        </Typography>
+        <Box display="flex" alignItems="center" justifyContent="center" gap={1.5} mb={3}>
+          <img src="/favicon.svg" alt="" aria-hidden="true" style={{ height: 52 }} />
+          <Typography variant="h4" fontWeight={600} color="primary" letterSpacing={-0.5}>
+            gravys
+          </Typography>
+        </Box>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
             <TextField

@@ -19,3 +19,7 @@ Please implement the following new features and updates:
 - Please remove the usage of Chakra and Emotion Javascript libraries and use the well-established Material UI component library instead. Allow the users to switch between light-mode and dark-mode and use #27d644 as the primary color for UI elements.
 - Additionally, when reloading page after having logged in before, the page should remember the user and not require a new login. When clicking the the user profile name and icon in the right-hand corner, the user should be logged out and be redirected to the login screen.
 - When adding a new or updating or deleting an existing ToDo item, reload the Sigma.js graph and the neo4j list.
+
+
+Okay, please generate a rectangular .svg file and the corresponding favicon and use them in the app with the following content:
+A stylized food plate with a blob of gravy (the app name) on the upper left of the plate and five stylized peas on the lower right, which are also abstract network nodes, that are connected by some hinted (solid and/or dotted or partial) network edges.

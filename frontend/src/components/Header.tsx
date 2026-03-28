@@ -22,9 +22,12 @@ const Header = () => {
   return (
     <AppBar position="fixed">
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography variant="h6" fontWeight="bold">
-          Todos
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+          <img src="/favicon.svg" alt="Gravys" height="34" style={{ display: "block" }} />
+          <Typography variant="h6" fontWeight="600">
+            gravys
+          </Typography>
+        </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <Tooltip title={theme.palette.mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
             <IconButton onClick={toggleColorMode} color="inherit">

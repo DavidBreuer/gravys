@@ -8,10 +8,7 @@ import Neo4jNodes from "./components/Neo4jNodes";
 import { AuthContext } from "./contexts/AuthContext";
 import { ColorModeContext } from "./contexts/ColorModeContext";
 import { RefreshContext } from "./contexts/RefreshContext";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+
 
 const LS_KEY = "gravys_auth";
 
@@ -59,6 +56,9 @@ function App() {
   const theme = useMemo(
     () =>
       createTheme({
+        typography: {
+          fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif",
+        },
         palette: {
           mode,
           primary: { main: "#27d644" },
