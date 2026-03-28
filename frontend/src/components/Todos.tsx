@@ -3,20 +3,22 @@ import {
   Box,
   Button,
   Container,
-  Flex,
-  Input,
-  DialogBody,
+  Dialog,
+  DialogActions,
   DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogRoot,
   DialogTitle,
-  DialogTrigger,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
   Stack,
-  Text,
-  DialogActionTrigger,
-} from "@chakra-ui/react";
-
+  TextField,
+  Typography,
+} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { AuthContext } from "../contexts/AuthContext";
+import { RefreshContext } from "../contexts/RefreshContext";
 
 interface Todo {
   id: string;
@@ -41,153 +43,161 @@ interface DeleteTodoProps {
 }
 
 const TodosContext = createContext({
-  todos: [], fetchTodos: () => {}
-})
+  todos: [] as Todo[],
+  fetchTodos: () => {},
+  authHeader: "",
+  bump: () => {},
+});
 
 function AddTodo() {
-  const [item, setItem] = React.useState("")
-  const {todos, fetchTodos} = React.useContext(TodosContext)
-
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setItem(event.target.value)
-  }
+  const [item, setItem] = React.useState("");
+  const { todos, fetchTodos, authHeader, bump } = React.useContext(TodosContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const newTodo = {
-      "id": todos.length + 1,
-      "item": item
-    }
-
+    event.preventDefault();
+    const newTodo = { id: String(todos.length + 1), item };
     fetch("http://localhost:8000/todo", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTodo)
-    }).then(fetchTodos)
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <Input
-        pr="4.5rem"
-        type="text"
-        placeholder="Add a todo item"
-        aria-label="Add a todo item"
-        onChange={handleInput}
-      />
-    </form>
-  )
-}
-
-const UpdateTodo = ({ item, id, fetchTodos }: UpdateTodoProps) => {
-  const [todo, setTodo] = useState(item);
-  const updateTodo = async () => {
-    await fetch(`http://localhost:8000/todo/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ item: todo }),
+      headers: { "Content-Type": "application/json", Authorization: authHeader },
+      body: JSON.stringify(newTodo),
+    }).then(() => {
+      fetchTodos();
+      bump();
     });
-    await fetchTodos();
+    setItem("");
   };
 
   return (
-    <DialogRoot>
-      <DialogTrigger asChild>
-        <Button h="1.5rem" size="sm">
-          Update Todo
+    <form onSubmit={handleSubmit}>
+      <Stack direction="row" spacing={1}>
+        <TextField
+          size="small"
+          fullWidth
+          value={item}
+          placeholder="Add a todo item"
+          onChange={(e) => setItem(e.target.value)}
+        />
+        <Button type="submit" variant="contained" sx={{ whiteSpace: "nowrap" }}>
+          Add
         </Button>
-      </DialogTrigger>
-      <DialogContent
-        position="fixed"
-        top="50%"
-        left="50%"
-        transform="translate(-50%, -50%)"
-        bg="white"
-        p={6}
-        rounded="md"
-        shadow="xl"
-        maxW="md"
-        w="90%"
-        zIndex={1000}
-      >
-        <DialogHeader>
-          <DialogTitle>Update Todo</DialogTitle>
-        </DialogHeader>
-        <DialogBody>
-          <Input
-            pr="4.5rem"
-            type="text"
-            placeholder="Add a todo item"
-            aria-label="Add a todo item"
-            value={todo}
-            onChange={event => setTodo(event.target.value)}
-          />
-        </DialogBody>
-        <DialogFooter>
-          <DialogActionTrigger asChild>
-            <Button variant="outline" size="sm">Cancel</Button>
-          </DialogActionTrigger>
-          <Button size="sm" onClick={updateTodo}>Save</Button>
-        </DialogFooter>
-      </DialogContent>
-    </DialogRoot>
-  )
+      </Stack>
+    </form>
+  );
 }
 
+const UpdateTodo = ({ item, id, fetchTodos }: UpdateTodoProps) => {
+  const [open, setOpen] = useState(false);
+  const [todo, setTodo] = useState(item);
+  const { authHeader } = useContext(AuthContext);
+  const { bump } = useContext(RefreshContext);
+
+  const updateTodo = async () => {
+    await fetch(`http://localhost:8000/todo/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json", Authorization: authHeader },
+      body: JSON.stringify({ item: todo }),
+    });
+    setOpen(false);
+    await fetchTodos();
+    bump();
+  };
+
+  return (
+    <>
+      <IconButton size="small" onClick={() => setOpen(true)}>
+        <EditIcon fontSize="small" />
+      </IconButton>
+      <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth="sm">
+        <DialogTitle>Update Todo</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            fullWidth
+            value={todo}
+            onChange={(e) => setTodo(e.target.value)}
+            margin="dense"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setOpen(false)}>Cancel</Button>
+          <Button onClick={updateTodo} variant="contained">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+};
+
 const DeleteTodo = ({ id, fetchTodos }: DeleteTodoProps) => {
+  const { authHeader } = useContext(AuthContext);
+  const { bump } = useContext(RefreshContext);
   const deleteTodo = async () => {
     await fetch(`http://localhost:8000/todo/${id}`, {
       method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: id })
-    })
-    await fetchTodos()
-  }
+      headers: { "Content-Type": "application/json", Authorization: authHeader },
+      body: JSON.stringify({ id }),
+    });
+    await fetchTodos();
+    bump();
+  };
 
   return (
-    <Button h="1.5rem" size="sm" marginLeft={2} onClick={deleteTodo}>Delete Todo</Button>
-  )
-}
+    <IconButton size="small" onClick={deleteTodo} color="error">
+      <DeleteIcon fontSize="small" />
+    </IconButton>
+  );
+};
 
-function TodoHelper({item, id, fetchTodos}: TodoHelperProps) {
+function TodoHelper({ item, id, fetchTodos }: TodoHelperProps) {
   return (
-    <Box p={1} shadow="sm">
-      <Flex justify="space-between">
-        <Text mt={4} as="div">
-          {item}
-          <Flex align="end">
-            <UpdateTodo item={item} id={id} fetchTodos={fetchTodos}/>
-            <DeleteTodo id={id} fetchTodos={fetchTodos}/>  {/* new */}
-          </Flex>
-        </Text>
-      </Flex>
-    </Box>
-  )
+    <ListItem
+      divider
+      secondaryAction={
+        <Stack direction="row" spacing={0.5}>
+          <UpdateTodo item={item} id={id} fetchTodos={fetchTodos} />
+          <DeleteTodo id={id} fetchTodos={fetchTodos} />
+        </Stack>
+      }
+    >
+      <ListItemText primary={item} />
+    </ListItem>
+  );
 }
 
 export default function Todos() {
-  const [todos, setTodos] = useState([])
-  const fetchTodos = async () => {
-    const response = await fetch("http://localhost:8000/todo")
-    const todos = await response.json()
-    setTodos(todos.data)
-  }
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const { authHeader } = useContext(AuthContext);
+  const { bump } = useContext(RefreshContext);
+  const fetchTodos = React.useCallback(async () => {
+    const response = await fetch("http://localhost:8000/todo", {
+      headers: { Authorization: authHeader },
+    });
+    const data = await response.json();
+    setTodos(data.data);
+  }, [authHeader]);
+
   useEffect(() => {
-    fetchTodos()
-  }, [])
+    fetchTodos();
+  }, [fetchTodos]);
 
   return (
-    <TodosContext.Provider value={{todos, fetchTodos}}>
-      <Container maxW="container.xl" pt="100px">
+    <TodosContext.Provider value={{ todos, fetchTodos, authHeader, bump }}>
+      <Container maxWidth="md" sx={{ pt: "80px" }}>
         <AddTodo />
-        <Stack gap={5}>
-            {
-            todos.map((todo) => (
-                <TodoHelper item={todo.item} id={todo.id} fetchTodos={fetchTodos}/>
-            ))
-            }
-        </Stack>
+        <Box mt={2}>
+          {todos.length === 0 && (
+            <Typography color="text.secondary" mt={2}>
+              No todos yet. Add one above!
+            </Typography>
+          )}
+          <List disablePadding>
+            {todos.map((todo) => (
+              <TodoHelper key={todo.id} item={todo.item} id={todo.id} fetchTodos={fetchTodos} />
+            ))}
+          </List>
+        </Box>
       </Container>
     </TodosContext.Provider>
-  )
+  );
 }

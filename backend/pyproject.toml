@@ -9,6 +9,7 @@ dependencies = [
     "uvicorn",
     "pandas",
     "python-dotenv",
+    "neo4j",
 ]
 
 [dependency-groups]

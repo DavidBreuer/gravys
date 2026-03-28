@@ -1,4 +1,7 @@
 
+.PHONY: stop
+stop:
+	lsof -ti:8000 | xargs kill -9 2>/dev/null; sleep 2;
 
 .PHONY: runb
 runb:
@@ -11,6 +14,10 @@ runf:
 .PHONY: run
 run:
 	make runb & make runf &
+
+.PHONY: test
+test: run & sleep 5 && \
+	uv --directory backend run pytest tests/ -v
 
 .PHONY: formatpy
 formatpy:

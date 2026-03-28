@@ -1,0 +1,10 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "npm install": true,
+        "uv": true,
+        "npm run format": true,
+        "npm uninstall": true,
+        "test": true,
+        "npm run build": true
+    }
+}

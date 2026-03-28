@@ -11,12 +11,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^3.4.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "emotion-theming": "^11.0.0",
+    "@fontsource/roboto": "^5.2.10",
+    "@mui/icons-material": "^6.5.0",
+    "@mui/material": "^6.5.0",
+    "graphology": "^0.26.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sigma": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

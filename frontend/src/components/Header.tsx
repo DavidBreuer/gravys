@@ -1,27 +1,51 @@
-import React from "react";
-import { Heading, Flex, Separator } from "@chakra-ui/react";
+import { useContext } from "react";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { AuthContext } from "../contexts/AuthContext";
+import { ColorModeContext } from "../contexts/ColorModeContext";
 
 const Header = () => {
+  const { username, logout } = useContext(AuthContext);
+  const theme = useTheme();
+  const { toggleColorMode } = useContext(ColorModeContext);
+
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding="1rem"
-      bg="gray.400"
-      width="100%"
-      position="fixed"
-      top="0"
-      left="0"
-      right="0"
-      zIndex="1000"
-    >
-      <Flex align="center" as="nav" mr={5}>
-        <Heading as="h1" size="sm">Todos</Heading>
-        <Separator />
-      </Flex>
-    </Flex>
+    <AppBar position="fixed">
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Typography variant="h6" fontWeight="bold">
+          Todos
+        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Tooltip title={theme.palette.mode === "dark" ? "Switch to light mode" : "Switch to dark mode"}>
+            <IconButton onClick={toggleColorMode} color="inherit">
+              {theme.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Click to logout">
+            <IconButton
+              onClick={logout}
+              color="inherit"
+              sx={{ display: "flex", alignItems: "center", gap: 1, borderRadius: 2 }}
+            >
+              <Avatar sx={{ width: 30, height: 30, bgcolor: "primary.dark", fontSize: 14 }}>
+                {username.charAt(0).toUpperCase()}
+              </Avatar>
+              <Typography variant="body2">{username}</Typography>
+            </IconButton>
+          </Tooltip>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 
