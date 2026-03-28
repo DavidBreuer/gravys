@@ -23,7 +23,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="8.4125"
-     inkscape:cx="37.147103"
+     inkscape:cx="37.028232"
      inkscape:cy="40"
      inkscape:window-width="1392"
      inkscape:window-height="1052"
@@ -334,14 +334,6 @@
       </g>
     </clipPath>
   </defs>
-  <!-- Plate rim and surface -->
-  <circle
-     cx="40"
-     cy="40"
-     r="36"
-     fill="#D6D9DC"
-     filter="url(#fav-shadow)"
-     id="circle2" />
   <circle
      cx="40"
      cy="40"
@@ -420,109 +412,89 @@
      id="line10"
      clip-path="url(#clipPath32)"
      transform="matrix(-0.01685507,-0.99985794,0.76840573,-0.01295337,12.589968,96.977869)" />
-  <g
-     id="g42"
-     transform="matrix(1.2717312,0,0,1.2717312,-14.707131,-13.405406)">
-    <circle
-       cx="48"
-       cy="47"
-       r="5"
-       fill="#27d644"
-       id="circle11"
-       clip-path="url(#clipPath30)"
-       transform="translate(-5.3491828,-5.3491828)" />
-    <circle
-       cx="46.200001"
-       cy="45.200001"
-       r="2"
-       fill="#ffffff"
-       opacity="0.55"
-       id="circle16"
-       clip-path="url(#clipPath25)"
-       transform="translate(-5.3491828,-5.3491828)" />
-  </g>
-  <g
-     id="g41"
-     transform="matrix(1.2717312,0,0,1.2717312,-10.927841,-24.13859)">
-    <circle
-       cx="57"
-       cy="41"
-       r="5"
-       fill="#27d644"
-       id="circle12"
-       clip-path="url(#clipPath29)"
-       transform="translate(-5.3491828,-5.3491828)" />
-    <circle
-       cx="55.200001"
-       cy="39.200001"
-       r="2"
-       fill="#ffffff"
-       opacity="0.55"
-       id="circle17"
-       clip-path="url(#clipPath24)"
-       transform="translate(-5.3491828,-5.3491828)" />
-  </g>
-  <g
-     id="g41-2"
-     transform="matrix(1.2717312,0,0,1.2717312,-0.67462669,-8.1956537)">
-    <circle
-       cx="57"
-       cy="41"
-       r="5"
-       fill="#27d644"
-       id="circle12-7"
-       clip-path="url(#clipPath29-9)"
-       transform="translate(-5.3491828,-5.3491828)" />
-    <circle
-       cx="55.200001"
-       cy="39.200001"
-       r="2"
-       fill="#ffffff"
-       opacity="0.55"
-       id="circle17-0"
-       clip-path="url(#clipPath24-5)"
-       transform="translate(-5.3491828,-5.3491828)" />
-  </g>
-  <g
-     id="g43"
-     transform="matrix(1.2717312,0,0,1.2717312,-22.416883,-7.3585407)">
-    <circle
-       cx="47"
-       cy="58"
-       r="5"
-       fill="#27d644"
-       id="circle15"
-       clip-path="url(#clipPath26)"
-       transform="translate(-5.3491828,-5.3491828)" />
-    <circle
-       cx="45.200001"
-       cy="56.200001"
-       r="2"
-       fill="#ffffff"
-       opacity="0.55"
-       id="circle20"
-       clip-path="url(#clipPath21)"
-       transform="translate(-5.3491828,-5.3491828)" />
-  </g>
-  <g
-     id="g43-9"
-     transform="matrix(1.2717312,0,0,1.2717312,2.9704995,-6.7368477)">
-    <circle
-       cx="47"
-       cy="58"
-       r="5"
-       fill="#27d644"
-       id="circle15-7"
-       clip-path="url(#clipPath26-7)"
-       transform="translate(-5.3491828,-5.3491828)" />
-    <circle
-       cx="45.200001"
-       cy="56.200001"
-       r="2"
-       fill="#ffffff"
-       opacity="0.55"
-       id="circle20-0"
-       clip-path="url(#clipPath21-2)"
-       transform="translate(-5.3491828,-5.3491828)" />
-  </g>
+  <circle
+     cx="48"
+     cy="47"
+     r="5"
+     fill="#27d644"
+     id="circle11"
+     clip-path="url(#clipPath30)"
+     transform="matrix(1.2717312,0,0,1.2717312,-21.509854,-20.208129)" />
+  <circle
+     cx="46.200001"
+     cy="45.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle16"
+     clip-path="url(#clipPath25)"
+     transform="matrix(1.2717312,0,0,1.2717312,-21.509854,-20.208129)" />
+  <circle
+     cx="57"
+     cy="41"
+     r="5"
+     fill="#27d644"
+     id="circle12"
+     clip-path="url(#clipPath29)"
+     transform="matrix(1.2717312,0,0,1.2717312,-17.730564,-30.941313)" />
+  <circle
+     cx="55.200001"
+     cy="39.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle17"
+     clip-path="url(#clipPath24)"
+     transform="matrix(1.2717312,0,0,1.2717312,-17.730564,-30.941313)" />
+  <circle
+     cx="57"
+     cy="41"
+     r="5"
+     fill="#27d644"
+     id="circle12-7"
+     clip-path="url(#clipPath29-9)"
+     transform="matrix(1.2717312,0,0,1.2717312,-7.4773494,-14.998376)" />
+  <circle
+     cx="55.200001"
+     cy="39.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle17-0"
+     clip-path="url(#clipPath24-5)"
+     transform="matrix(1.2717312,0,0,1.2717312,-7.4773494,-14.998376)" />
+  <circle
+     cx="47"
+     cy="58"
+     r="5"
+     fill="#27d644"
+     id="circle15"
+     clip-path="url(#clipPath26)"
+     transform="matrix(1.2717312,0,0,1.2717312,-29.219606,-14.161263)" />
+  <circle
+     cx="45.200001"
+     cy="56.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle20"
+     clip-path="url(#clipPath21)"
+     transform="matrix(1.2717312,0,0,1.2717312,-29.219606,-14.161263)" />
+  <circle
+     cx="47"
+     cy="58"
+     r="5"
+     fill="#27d644"
+     id="circle15-7"
+     clip-path="url(#clipPath26-7)"
+     transform="matrix(1.2717312,0,0,1.2717312,-3.8322232,-13.53957)" />
+  <circle
+     cx="45.200001"
+     cy="56.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle20-0"
+     clip-path="url(#clipPath21-2)"
+     transform="matrix(1.2717312,0,0,1.2717312,-3.8322232,-13.53957)" />
 </svg>
