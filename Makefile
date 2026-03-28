@@ -17,7 +17,7 @@ run: stop
 
 .PHONY: test
 test:
-	uv --directory backend run pytest tests/ -v -s
+	uv --directory backend run pytest tests/ --headed -v -s
 
 .PHONY: formatpy
 formatpy:

@@ -1,4 +1,5 @@
 import os
+import time
 
 from playwright.sync_api import Page, expect
 
@@ -18,5 +19,8 @@ def test_login_success_shows_app(page: Page):
     page.goto(BASE_URL)
     page.get_by_label("Username").fill("testuser")
     page.get_by_label("Password").fill(key)
+    # time.sleep(10)
     page.get_by_role("button", name="Login").click()
-    expect(page.get_by_text("Todos")).to_be_visible()
+    # time.sleep(10)
+    expect(page.get_by_role("heading", name="Todos")).to_be_visible()
+    # time.sleep(10)
