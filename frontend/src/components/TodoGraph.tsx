@@ -75,20 +75,17 @@ export default function TodoGraph() {
             labelColor: { color: isDark ? "#ffffff" : "#111111" },
           });
 
-          const showTooltip = (node: string, sigma: InstanceType<typeof Sigma>) => {
+          const showTooltip = (node: string) => {
             const attrs = graph.getNodeAttributes(node);
-            const displayData = sigma.getNodeDisplayData(node);
-            if (tooltipRef.current && displayData) {
+            if (tooltipRef.current) {
               tooltipRef.current.innerHTML =
                 `<strong>${attrs.todoItem}</strong><div style="margin-top:3px;opacity:0.7;font-size:11px">ID: ${attrs.todoId}</div>`;
-              tooltipRef.current.style.left = `${displayData.x}px`;
-              tooltipRef.current.style.top = `${displayData.y}px`;
               tooltipRef.current.style.display = "block";
             }
           };
 
           sigmaRef.current.on("enterNode", ({ node }) => {
-            showTooltip(node, sigmaRef.current!);
+            showTooltip(node);
             if (containerRef.current) containerRef.current.style.cursor = "pointer";
           });
 
@@ -98,7 +95,7 @@ export default function TodoGraph() {
           });
 
           sigmaRef.current.on("clickNode", ({ node }) => {
-            showTooltip(node, sigmaRef.current!);
+            showTooltip(node);
           });
         }
       })
@@ -138,6 +135,8 @@ export default function TodoGraph() {
           style={{
             display: "none",
             position: "absolute",
+            top: "10px",
+            right: "10px",
             background: isDark ? "rgba(30,30,30,0.95)" : "rgba(255,255,255,0.95)",
             color: isDark ? "#fff" : "#111",
             border: `1px solid ${isDark ? "#555" : "#ddd"}`,
@@ -145,7 +144,6 @@ export default function TodoGraph() {
             borderRadius: "6px",
             fontSize: "13px",
             pointerEvents: "none",
-            transform: "translate(-50%, calc(-100% - 14px))",
             whiteSpace: "nowrap",
             boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
             zIndex: 10,
