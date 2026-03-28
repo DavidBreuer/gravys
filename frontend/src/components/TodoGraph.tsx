@@ -1,5 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import { Box, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import Graph from "graphology";
 import { Sigma } from "sigma";
 import { AuthContext } from "../contexts/AuthContext";
@@ -25,9 +26,11 @@ function getWords(text: string): string[] {
 
 export default function TodoGraph() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
   const { authHeader } = useContext(AuthContext);
   const { version } = useContext(RefreshContext);
   const sigmaRef = useRef<InstanceType<typeof Sigma> | null>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -44,10 +47,12 @@ export default function TodoGraph() {
           const angle = (2 * Math.PI * i) / Math.max(todos.length, 1);
           graph.addNode(todo.id, {
             label: todo.item.length > 30 ? todo.item.substring(0, 30) + "…" : todo.item,
+            todoItem: todo.item,
+            todoId: todo.id,
             x: Math.cos(angle),
             y: Math.sin(angle),
             size: 12,
-            color: "#6366f1",
+            color: "#27d644",
           });
         });
 
@@ -63,9 +68,37 @@ export default function TodoGraph() {
 
         if (containerRef.current) {
           if (sigmaRef.current) sigmaRef.current.kill();
+          const isDark = theme.palette.mode === "dark";
           sigmaRef.current = new Sigma(graph, containerRef.current, {
             renderEdgeLabels: false,
             defaultEdgeColor: "#94a3b8",
+            labelColor: { color: isDark ? "#ffffff" : "#111111" },
+          });
+
+          const showTooltip = (node: string, sigma: InstanceType<typeof Sigma>) => {
+            const attrs = graph.getNodeAttributes(node);
+            const displayData = sigma.getNodeDisplayData(node);
+            if (tooltipRef.current && displayData) {
+              tooltipRef.current.innerHTML =
+                `<strong>${attrs.todoItem}</strong><div style="margin-top:3px;opacity:0.7;font-size:11px">ID: ${attrs.todoId}</div>`;
+              tooltipRef.current.style.left = `${displayData.x}px`;
+              tooltipRef.current.style.top = `${displayData.y}px`;
+              tooltipRef.current.style.display = "block";
+            }
+          };
+
+          sigmaRef.current.on("enterNode", ({ node }) => {
+            showTooltip(node, sigmaRef.current!);
+            if (containerRef.current) containerRef.current.style.cursor = "pointer";
+          });
+
+          sigmaRef.current.on("leaveNode", () => {
+            if (tooltipRef.current) tooltipRef.current.style.display = "none";
+            if (containerRef.current) containerRef.current.style.cursor = "default";
+          });
+
+          sigmaRef.current.on("clickNode", ({ node }) => {
+            showTooltip(node, sigmaRef.current!);
           });
         }
       })
@@ -77,7 +110,9 @@ export default function TodoGraph() {
         sigmaRef.current = null;
       }
     };
-  }, [authHeader, version]);
+  }, [authHeader, version, theme.palette.mode]);
+
+  const isDark = theme.palette.mode === "dark";
 
   return (
     <Box mt={3}>
@@ -87,16 +122,37 @@ export default function TodoGraph() {
       <Typography variant="body2" color="text.secondary" mb={1}>
         Nodes are todos. Edges connect todos sharing at least one common word.
       </Typography>
-      <div
-        ref={containerRef}
-        style={{
-          width: "100%",
-          height: "400px",
-          border: "1px solid #e2e8f0",
-          borderRadius: "8px",
-          background: "#f8fafc",
-        }}
-      />
+      <div style={{ position: "relative" }}>
+        <div
+          ref={containerRef}
+          style={{
+            width: "100%",
+            height: "400px",
+            border: `1px solid ${isDark ? "#444" : "#e2e8f0"}`,
+            borderRadius: "8px",
+            background: isDark ? "#1e1e1e" : "#f8fafc",
+          }}
+        />
+        <div
+          ref={tooltipRef}
+          style={{
+            display: "none",
+            position: "absolute",
+            background: isDark ? "rgba(30,30,30,0.95)" : "rgba(255,255,255,0.95)",
+            color: isDark ? "#fff" : "#111",
+            border: `1px solid ${isDark ? "#555" : "#ddd"}`,
+            padding: "6px 10px",
+            borderRadius: "6px",
+            fontSize: "13px",
+            pointerEvents: "none",
+            transform: "translate(-50%, calc(-100% - 14px))",
+            whiteSpace: "nowrap",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+            zIndex: 10,
+          }}
+        />
+      </div>
     </Box>
   );
 }
+

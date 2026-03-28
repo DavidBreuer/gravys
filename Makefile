@@ -1,7 +1,7 @@
 
 .PHONY: stop
 stop:
-	lsof -ti:8000 | xargs kill -9 2>/dev/null; sleep 2;
+	lsof -ti:8000 | xargs kill -9 2>/dev/null; sleep 2; lsof -ti:5173 | xargs kill -9 2>/dev/null; sleep 2;
 
 .PHONY: runb
 runb:
@@ -12,12 +12,12 @@ runf:
 	npm --prefix frontend run dev
 
 .PHONY: run
-run:
+run: stop
 	make runb & make runf &
 
 .PHONY: test
-test: run & sleep 5 && \
-	uv --directory backend run pytest tests/ -v
+test:
+	uv --directory backend run pytest tests/ -v -s
 
 .PHONY: formatpy
 formatpy:

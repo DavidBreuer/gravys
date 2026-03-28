@@ -30,7 +30,9 @@ function readStoredAuth(): StoredAuth | null {
 }
 
 function App() {
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">(
+    () => (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+  );
   const [auth, setAuth] = useState<StoredAuth | null>(readStoredAuth);
   const [todoVersion, setTodoVersion] = useState(0);
   const refreshCtx = useMemo(
@@ -60,6 +62,45 @@ function App() {
         palette: {
           mode,
           primary: { main: "#27d644" },
+        },
+        components: {
+          MuiButtonBase: {
+            styleOverrides: {
+              root: {
+                "&:focus-visible": { outline: "none", boxShadow: "none" },
+                "&.Mui-focusVisible": { outline: "none", boxShadow: "none" },
+              },
+            },
+          },
+          MuiButton: {
+            styleOverrides: {
+              root: {
+                boxShadow: "none",
+                "&:hover": { boxShadow: "none" },
+                "&:active": { boxShadow: "none" },
+                "&:focus-visible": { outline: "none", boxShadow: "none" },
+                "&.Mui-focusVisible": { outline: "none", boxShadow: "none" },
+              },
+            },
+          },
+          MuiIconButton: {
+            styleOverrides: {
+              root: {
+                "&:focus-visible": { outline: "none", boxShadow: "none" },
+                "&.Mui-focusVisible": { outline: "none", boxShadow: "none" },
+              },
+            },
+          },
+          MuiOutlinedInput: {
+            styleOverrides: {
+              root: {
+                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#27d644",
+                  borderWidth: 1,
+                },
+              },
+            },
+          },
         },
       }),
     [mode]
