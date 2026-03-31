@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 80 80"
+   width="80"
+   height="80"
+   role="img"
+   aria-label="Gravys icon"
+   version="1.1"
+   id="svg20"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview20"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="8.4125"
+     inkscape:cx="37.028232"
+     inkscape:cy="40"
+     inkscape:window-width="1392"
+     inkscape:window-height="1052"
+     inkscape:window-x="58"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg20" />
+
+  <circle
+     cx="40"
+     cy="40"
+     fill="#f8f9fa"
+     id="circle4"
+     style="stroke-width:1.25"
+     r="37.5" />
+  <path
+     d="M 21,21 C 25,11 37,13 40,21 43,30 37,37 29,37 13.761853,36.919166 9.452351,27.457172 21,21 Z"
+     fill="#9e7020"
+     id="path4"
+     clip-path="url(#clipPath39)"
+     sodipodi:nodetypes="ccsc"
+     transform="matrix(1.2480815,0,0,1.1409491,-6.4332694,-7.7114004)" />
+  <path
+     d="m 24,20 c 3,-7 10,-6 12,1 2,6 -2,10 -7,9 -5,-1 -7,-7 -5,-10 z"
+     fill="#c49030"
+     opacity="0.45"
+     id="path5"
+     clip-path="url(#clipPath38)"
+     transform="matrix(1.2480815,0,0,1.1409491,-6.4332694,-7.7114004)" />
+  <line
+     x1="48"
+     y1="47"
+     x2="57"
+     y2="41"
+     stroke="#27d644"
+     stroke-width="1.6"
+     stroke-opacity="0.65"
+     id="line5"
+     clip-path="url(#clipPath37)"
+     transform="matrix(0.89493287,0,0,1.5943524,0.28571202,-39.762204)" />
+  <line
+     x1="57"
+     y1="41"
+     x2="63"
+     y2="51"
+     stroke="#27d644"
+     stroke-width="1.6"
+     stroke-opacity="0.65"
+     id="line6"
+     clip-path="url(#clipPath36)"
+     transform="translate(0.11887066,-15.453194)" />
+  <line
+     x1="63"
+     y1="51"
+     x2="57"
+     y2="60"
+     stroke="#27d644"
+     stroke-width="1.6"
+     stroke-opacity="0.6"
+     stroke-dasharray="3, 2.5"
+     id="line7"
+     clip-path="url(#clipPath35)"
+     transform="matrix(1.4572332,-0.31705264,0.3362751,1.4117195,-44.862246,-9.6307033)" />
+  <line
+     x1="57"
+     y1="60"
+     x2="47"
+     y2="58"
+     stroke="#27d644"
+     stroke-width="1.6"
+     stroke-opacity="0.65"
+     id="line8"
+     clip-path="url(#clipPath34)"
+     transform="matrix(1.6155773,-0.22533351,0.25805963,0.92288559,-56.626327,17.218058)" />
+  <line
+     x1="57"
+     y1="41"
+     x2="57"
+     y2="60"
+     stroke="#27d644"
+     stroke-width="1.1"
+     stroke-opacity="0.38"
+     stroke-dasharray="2, 3.5"
+     id="line10"
+     clip-path="url(#clipPath32)"
+     transform="matrix(-0.01685507,-0.99985794,0.76840573,-0.01295337,12.589968,96.977869)" />
+  <circle
+     cx="48"
+     cy="47"
+     r="5"
+     fill="#27d644"
+     id="circle11"
+     clip-path="url(#clipPath30)"
+     transform="matrix(1.2717312,0,0,1.2717312,-21.509854,-20.208129)" />
+  <circle
+     cx="46.200001"
+     cy="45.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle16"
+     clip-path="url(#clipPath25)"
+     transform="matrix(1.2717312,0,0,1.2717312,-21.509854,-20.208129)" />
+  <circle
+     cx="57"
+     cy="41"
+     r="5"
+     fill="#27d644"
+     id="circle12"
+     clip-path="url(#clipPath29)"
+     transform="matrix(1.2717312,0,0,1.2717312,-17.730564,-30.941313)" />
+  <circle
+     cx="55.200001"
+     cy="39.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle17"
+     clip-path="url(#clipPath24)"
+     transform="matrix(1.2717312,0,0,1.2717312,-17.730564,-30.941313)" />
+  <circle
+     cx="57"
+     cy="41"
+     r="5"
+     fill="#27d644"
+     id="circle12-7"
+     clip-path="url(#clipPath29-9)"
+     transform="matrix(1.2717312,0,0,1.2717312,-7.4773494,-14.998376)" />
+  <circle
+     cx="55.200001"
+     cy="39.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle17-0"
+     clip-path="url(#clipPath24-5)"
+     transform="matrix(1.2717312,0,0,1.2717312,-7.4773494,-14.998376)" />
+  <circle
+     cx="47"
+     cy="58"
+     r="5"
+     fill="#27d644"
+     id="circle15"
+     clip-path="url(#clipPath26)"
+     transform="matrix(1.2717312,0,0,1.2717312,-29.219606,-14.161263)" />
+  <circle
+     cx="45.200001"
+     cy="56.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle20"
+     clip-path="url(#clipPath21)"
+     transform="matrix(1.2717312,0,0,1.2717312,-29.219606,-14.161263)" />
+  <circle
+     cx="47"
+     cy="58"
+     r="5"
+     fill="#27d644"
+     id="circle15-7"
+     clip-path="url(#clipPath26-7)"
+     transform="matrix(1.2717312,0,0,1.2717312,-3.8322232,-13.53957)" />
+  <circle
+     cx="45.200001"
+     cy="56.200001"
+     r="2"
+     fill="#ffffff"
+     opacity="0.55"
+     id="circle20-0"
+     clip-path="url(#clipPath21-2)"
+     transform="matrix(1.2717312,0,0,1.2717312,-3.8322232,-13.53957)" />
+</svg>

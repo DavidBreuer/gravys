@@ -1,36 +1,29 @@
-
 .PHONY: stop
 stop:
-	lsof -ti:8000 | xargs kill -9 2>/dev/null; sleep 2; lsof -ti:5173 | xargs kill -9 2>/dev/null; sleep 2;
-
-.PHONY: runb
-runb:
-	uv --directory backend run python main.py
-
-.PHONY: runf
-runf:
-	npm --prefix frontend run dev
+	lsof -ti:8500 | xargs kill -9 2>/dev/null; sleep 2;
 
 .PHONY: run
-run: stop
-	make runb & make runf &
+run:
+	uv run python app.py
 
+# uv run playwright install
+# uv run playwright codegen localhost:8500
+
+# Run ALL tests: unit first (fast), then E2E (requires running app)
 .PHONY: test
 test:
-	uv --directory backend run pytest tests/ --headed -v -s
-
-.PHONY: formatpy
-formatpy:
-	@uv --directory backend run ruff format
-	@uv --directory backend run ruff check --fix --fix-only
-
-.PHONY: formatjs
-formatjs:
-	npm --prefix frontend run format
+	DEBUG=false uv run python app.py & sleep 5 &
+	uv run pytest tests/test_ui.py -s -v --headed; \
+	make stop
 
 .PHONY: format
 format:
-	make formatpy & make formatjs
+	@uv run ruff format
+	@uv run ruff check --fix --fix-only
+
+.PHONY: gc
+gc: stop
+	gunicorn -b 0.0.0.0:8500 app:server
 
 .PHONY: docker
 docker:

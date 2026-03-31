@@ -1,0 +1,33 @@
+[project]
+name = "Fishy"
+version = "0.7.0"
+description = "Fishy"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dash>=4.0.0",
+    "pandas",
+    "gunicorn",
+    "psycopg2-binary",
+    "python-dotenv",
+    "gunicorn>=20",
+    "dash-bootstrap-components",
+    "whitenoise>5",
+    "pillow>=12.1.1",
+    "openpyxl>=3.1.5",
+    "flask-login>=0.6",
+]
+
+[dependency-groups]
+dev = [
+    "playwright>=1.58.0",
+    "pytest-playwright>=0.7.2",
+    "pytest>=8",
+    "ruff>=0.14.11",
+]
+
+[tool.pytest.ini_options]
+# Default test paths
+testpaths = ["tests"]
+# Make the project root importable as a package root (fixes "No module named 'app'")
+pythonpath = ["."]
