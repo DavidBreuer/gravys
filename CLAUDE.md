@@ -34,10 +34,7 @@ NEVER commit secrets, credentials, or local .env files.
 
 ## Background Information
 
-- *Fishy* is a light-weight Progressive Web Application (PWA) built using Python Flask and Dash.
-- It allows users to log in and track fish-based products and their sustainability and animal welfare labels for a set of supermarkets.
-- Users can easily and conventiently add their assessments as well as photos for documentation purposes.
-- Finally, the application offers a simple summary analysis across supermarkets and labels as well as data download for custom in-depth analyses.
+- The folder contains a light-weight Web Application built using Python Flask and Dash.
 
 ## Repository Information
 

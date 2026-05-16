@@ -47,14 +47,6 @@ app = Dash(
     __name__,
     external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
     suppress_callback_exceptions=True,
-    meta_tags=[
-        {"name": "viewport", "content": "width=device-width, initial-scale=1"},
-        {"name": "theme-color", "content": "#27d644"},
-        {"name": "mobile-web-app-capable", "content": "yes"},
-        {"name": "apple-mobile-web-app-capable", "content": "yes"},
-        {"name": "apple-mobile-web-app-status-bar-style", "content": "default"},
-        {"name": "apple-mobile-web-app-title", "content": "Gravys"},
-    ],
 )
 
 server = app.server
@@ -116,14 +108,13 @@ def login_page():
         password = flask.request.form.get("password", "")
         expected_pwd = os.getenv("KEY", "")
         username_val = username
-        if not username:
-            error = "Ungültige Anmeldedaten."
-        elif password != expected_pwd:
-            error = "Ungültige Anmeldedaten."
+        msg = "Invalid login data."
+        if not username or password != expected_pwd:
+            error = msg
         else:
             display = username[2:].strip() if username.startswith("!!") else username
             if not display:
-                error = "Ungültige Anmeldedaten."
+                error = msg
             else:
                 user = User(username)
                 login_user(user)
@@ -170,7 +161,7 @@ layout = html.Div(
                                                 },
                                             ),
                                             html.Span(
-                                                "Fishy",
+                                                "Gravys",
                                                 style={
                                                     "fontWeight": "700",
                                                     "fontSize": "1.25rem",
@@ -223,7 +214,7 @@ layout = html.Div(
                     fluid=True,
                 ),
             ],
-            className="fishy-header",
+            className="gravys-header",
         ),
         dbc.Container(
             [
